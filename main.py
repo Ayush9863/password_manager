@@ -1,6 +1,7 @@
 from cryptography.fernet import Fernet
 import hashlib
 import os
+from playsound3 import playsound
 
 # Encryption key generate karo (ek baar)
 # key = Fernet.generate_key()
@@ -43,10 +44,12 @@ def verify_master_password():
 
         if hashed == saved_hash:
             print("Access granted ✅\n")
+            playsound("success.mp3")
             return True
         else:
             attempts -= 1
             print(f"Wrong password ❌ | Attempts left: {attempts}")
+            playsound("error.mp3")
 
     print("⛔ Too many wrong attempts. Program locked.")
     return False
