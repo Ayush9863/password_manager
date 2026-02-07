@@ -13,13 +13,7 @@ def load_key():
         return f.read()                   
 
 key=load_key()
-fer=Fernet(key)   #iska mtlb=“Is key se ek encryption/decryption tool bana do” 
-# fer.encrypt() → lock
-# fer.decrypt() → unlock
-
-# 👉 Fernet = lock + unlock machine
-# Iske bina password encrypt/decrypt nahi hoga.   
-
+fer=Fernet(key)   
 
 def set_master_password():
     master_pwd=input("what is the master password")
@@ -31,12 +25,9 @@ def set_master_password():
 def verify_master_password():
     if not os.path.exists("master.key"):
         set_master_password()
-# "Agar master.key file EXIST NAHI karti, to naya master password set karwa lo."
     with open("master.key", "r") as f:
         saved_hash = f.read()
-# saved_hash = file me saved password ka hash
-# 👉 Real password kabhi store nahi hota
-# 👉 Sirf uska hash (random looking string) store hota hai
+
     attempts = 3
     while attempts > 0:
         master_pwd = input("Enter master password: ")
