@@ -34,15 +34,15 @@ def verify_master_password():
         hashed = hashlib.sha256(master_pwd.encode()).hexdigest()
 
         if hashed == saved_hash:
-            print("Access granted ✅\n")
+            print("Access granted \n")
             playsound("success.mp3")
             return True
         else:
             attempts -= 1
-            print(f"Wrong password ❌ | Attempts left: {attempts}")
+            print(f"Wrong password  | Attempts left: {attempts}")
             playsound("error.mp3")
 
-    print("⛔ Too many wrong attempts. Program locked.")
+    print("Too many wrong attempts. Program locked.")
     return False
 
 
